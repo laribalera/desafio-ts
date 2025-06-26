@@ -11,7 +11,7 @@ app.use(express.json());
 
 connectDatabase();
 
-app.use("/editoras", editorasRouter);
+app.use("/editora", editorasRouter);
 //app.use("/livros", livrosRouter);
 
 const PORT = process.env.PORT || 3000;

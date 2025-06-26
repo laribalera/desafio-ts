@@ -18,5 +18,14 @@ router.get("/", async (req: Request, res: Response) => {
 });
 
 
+router.put("/:id", async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { nomeEditora } = req.body;
+  const editora = await EditoraModel.findByIdAndUpdate(id, { nomeEditora }, { new: true });
+  if (!editora) {
+    return res.status(404).json({ message: "Editora não encontrada" });
+  }
+  res.json(editora);
+});
 
 export default router;
