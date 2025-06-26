@@ -28,4 +28,13 @@ router.put("/:id", async (req: Request, res: Response) => {
   res.json(editora);
 });
 
+router.delete("/:id", async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const editora = await EditoraModel.findByIdAndDelete(id);
+  if (!editora) {
+    return res.status(404).json({ message: "Editora não encontrada" });
+  }
+  res.status(204).send();
+});
+
 export default router;
